@@ -37,27 +37,6 @@ public class OAuth2DemoAppApplication{
 		return Collections.singletonMap("name", principal.getAttribute("name"));
 	}
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-				.authorizeHttpRequests(a -> a
-						.requestMatchers("/", "/error", "/webjars/**").permitAll()
-						.anyRequest().authenticated()
-				)
-				.exceptionHandling(e -> e
-						.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-				)
-				.logout(l -> l
-						.logoutSuccessUrl("/").permitAll()
-				)
-				.csrf(c -> c
-						.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-				)
-				.oauth2Login(oauth2 -> oauth2
-						.defaultSuccessUrl("/", true)
-				);
 
-		return http.build();
-	}
 
 }
