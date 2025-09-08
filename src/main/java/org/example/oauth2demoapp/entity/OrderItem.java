@@ -8,28 +8,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product")
+@Table(name = "order_items")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-    private String name;
-    private String description;
-    private Double price;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    @Enumerated(EnumType.STRING)
-    private ProductType type;
+    private Integer quantity;
 
 }
-
-enum ProductType {
-    ELECTRONICS, CLOTHING, BOOKS, FOOD, OTHER
-}
-
-
