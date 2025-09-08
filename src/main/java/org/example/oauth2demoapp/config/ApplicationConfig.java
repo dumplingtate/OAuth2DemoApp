@@ -16,7 +16,8 @@ public class ApplicationConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(a -> a
-                        .requestMatchers("/", "/error", "/webjars/**").permitAll()
+                        .requestMatchers("/", "/error", "/webjars/**", "/api/products/**").permitAll()
+                        .requestMatchers("/api/orders/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(e -> e
