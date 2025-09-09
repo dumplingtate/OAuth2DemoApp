@@ -28,7 +28,7 @@ public class Product {
 
 }
 
-enum ProductType {
+public enum ProductType {
     ELECTRONICS, CLOTHING, BOOKS, FOOD, OTHER
 }
 

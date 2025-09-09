@@ -15,4 +15,28 @@
 
     //таблицы order product order_item
 
+    <changeSet id="create-table-order" author="uPagge">
+        <createTable tableName="order">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-product" author="uPagge">
+        <createTable tableName="product">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-order_item" author="uPagge">
+        <createTable tableName="order_item">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

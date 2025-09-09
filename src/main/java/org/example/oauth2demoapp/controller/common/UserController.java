@@ -1,4 +1,4 @@
-package org.example.oauth2demoapp.controller;
+package org.example.oauth2demoapp.controller.common;
 
 import lombok.RequiredArgsConstructor;
 import org.example.oauth2demoapp.entity.User;

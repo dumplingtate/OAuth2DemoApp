@@ -27,15 +27,16 @@ public class OAuth2DemoAppApplication{
 		SpringApplication.run(OAuth2DemoAppApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public String home() {
-		return "index"; //почему-то возвращает просто надпись index
-	}
-
-	@GetMapping("/user")
-	public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-		return Collections.singletonMap("name", principal.getAttribute("name"));
-	}
+//
+//	@GetMapping("/")
+//	public String home() {
+//		return "index"; //почему-то возвращает просто надпись index
+//	}
+//
+//	@GetMapping("/user")
+//	public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+//		return Collections.singletonMap("name", principal.getAttribute("name"));
+//	}
 
 
 
