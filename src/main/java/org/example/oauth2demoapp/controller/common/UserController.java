@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
-@RestController
 @RequiredArgsConstructor
 public class UserController {
 

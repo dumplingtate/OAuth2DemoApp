@@ -2,34 +2,43 @@ package org.example.oauth2demoapp.controller.common;
 
 
 import lombok.RequiredArgsConstructor;
+import org.example.oauth2demoapp.dto.ProductDto;
 import org.example.oauth2demoapp.entity.Product;
 import org.example.oauth2demoapp.entity.ProductType;
 import org.example.oauth2demoapp.service.ProductService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RestController
-@RequestMapping("/api.products")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
+    private final ModelMapper modelMapper;
+
     @GetMapping
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id){
-        return productService.getProductById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+    public ProductDto getProductById(@PathVariable Long id){
+        if(productService.getProductById(id).isPresent()){
+            return modelMapper.map(productService.getProductById(id).get(), ProductDto.class);
+        }
+        else{
+            throw new RuntimeException("Product not found");
+        }
+
     }
 
     @GetMapping("/type/{type}")
-    public List<Product> getProductById(@PathVariable ProductType type ){
+    public List<Product> getProductByType(@PathVariable ProductType type ){
         return productService.getProductByType(type);
     }
 

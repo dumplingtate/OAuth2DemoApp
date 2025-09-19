@@ -2,10 +2,8 @@ package org.example.oauth2demoapp.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "product")
@@ -18,9 +16,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotNull
     private String name;
     private String description;
+
     private Double price;
 
     @Enumerated(EnumType.STRING)
@@ -28,8 +27,6 @@ public class Product {
 
 }
 
-public enum ProductType {
-    ELECTRONICS, CLOTHING, BOOKS, FOOD, OTHER
-}
+
 
 
